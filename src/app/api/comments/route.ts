@@ -14,6 +14,6 @@ export async function GET(req: NextRequest) {
   await connectToDB();
   const { searchParams } = req.nextUrl;
   const postId = searchParams.get("postId");
-  const comments = Comment.find({ postId });
+  const comments = await Comment.find({ postId }).sort({ createdAt: -1 });
   return NextResponse.json(comments);
 }
