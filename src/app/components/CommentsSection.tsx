@@ -12,8 +12,9 @@ export default function CommentsSection({ postId }: { postId: string }) {
   const [newcomment, setNewComment] = useState("");
 
   useEffect(() => {
+    if(!postId)return;
     async function fetchComments() {
-      const res = await fetch(`/api/comments?postId=${postId}`);
+      const res = await fetch(`http://localhost:3000/api/comments?postId=${postId}`);
       const data = await res.json();
       setComments(data);
     }
@@ -22,6 +23,7 @@ export default function CommentsSection({ postId }: { postId: string }) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!postId || !newcomment.trim()) return;
     await fetch("/api/comments", {
       method: "POST",
       headers: {
