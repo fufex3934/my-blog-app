@@ -9,7 +9,7 @@ export async function DELETE(
 ) {
   await connectToDB();
   const {id} = await params;
-  console.log(id);
+  
 
   try {
     const post = await Post.findByIdAndDelete(id);
@@ -31,18 +31,20 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   await connectToDB();
-  const postId = (await params).id;
+  const {id} = await params;
   const { title, content } = await req.json();
 
   try {
     const post = await Post.findByIdAndUpdate(
-      postId,
+      id,
       { title, content },
       { new: true }
     );
     if (!post) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
+    return NextResponse.json({ message: "Post updated", post }, { status: 200 });
+
   } catch (error) {
     return NextResponse.json(
       { error: "something went wrong" },
