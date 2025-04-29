@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from "react";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 export default function CreatePost() {
+  const route = useRouter();
   const [title,setTitle] = useState("");
   const [content,setContent] = useState("");
 
@@ -16,6 +18,8 @@ export default function CreatePost() {
     if(res.ok){
       alert("Post Created");
     }
+   
+   route.push('/');
 
   };
   return (

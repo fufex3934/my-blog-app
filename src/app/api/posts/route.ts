@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   await connectToDB();
-  const posts = await Post.find();
+  const posts = await Post.find().sort({ createdAt: -1 });;
   return NextResponse.json(posts);
 }
 

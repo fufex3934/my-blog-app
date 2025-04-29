@@ -49,7 +49,7 @@ export default function FetchPost({ id }: Props) {
     });
 
     const result = await res.json();
-    console.log("Deleted:", result);
+   
     if (res.ok) {
       setPost(null);
     }
@@ -73,7 +73,7 @@ export default function FetchPost({ id }: Props) {
       }
   
       const result = await res.json();
-      
+      console.log(result);
       setPost(result.post); 
       setEditMode(false);
     } catch (err) {
