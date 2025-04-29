@@ -36,24 +36,27 @@ export default function CommentsSection({ postId }: { postId: string }) {
     const data = await res.json();
     setComments(data);
   };
+  
   return (
     <div>
-      <h1>Comments</h1>
+      <h1 className="text-xl font-semibold">Comments</h1>
       <ul>
         {comments.map((com) => (
-          <li key={com._id}>{com.comment}</li>
+          <li className="border p-2 my-2" key={com._id}>{com.comment}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="mt-4 flex space-x-6">
         <textarea
+        className="border basis-1/2"
           rows={3}
+          
           value={newcomment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Leave a comment"
           required
         />
 
-        <button type="submit">Post Comment</button>
+        <button  className="mt-2 px-4 py-2 bg-blue-600 text-white" type="submit">Post Comment</button>
       </form>
     </div>
   );

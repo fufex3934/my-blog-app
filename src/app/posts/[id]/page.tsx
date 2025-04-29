@@ -19,9 +19,10 @@ export default async function PostDetail({
   const { id } = await params;
   const post = await fetchPost(id);
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-3xl font-bold">{post.title}</h1>
+      <p className="mt-2">{post.content}</p>
+      <hr className="my-6" />
       <CommentsSection postId={post._id}/>
     </div>
   );

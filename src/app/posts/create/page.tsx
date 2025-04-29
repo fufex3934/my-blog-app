@@ -19,7 +19,7 @@ export default function CreatePost() {
 
   };
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-600 container mx-auto flex flex-col items-center p-6">
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-6">
       <h1 className="font-extrabold text-2xl mb-3">Create New Post</h1>
       <input type="text" placeholder="Enter Post Title" 
       value={title}
